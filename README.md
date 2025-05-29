@@ -55,7 +55,9 @@ published to GitHub Pages
       - name: Convert images
         uses: gha-utilities/ImageMagick@v0.0.1
         with:
-          destination_directory: _site/assets/images
+          source_directory: assets/images
+          source_extension: png
+          destination_extensions: jpeg,avif
 ```
 
 
