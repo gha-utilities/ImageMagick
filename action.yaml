@@ -1,0 +1,47 @@
+name: 'ImageMagick GHA'
+description: 'GitHub Action wrapper for ImageMagick for file conversion and/or manipulation'
+
+##
+#
+inputs:
+  source_directory:
+    description: 'Directory passed to `find` for finding files'
+    required: true
+
+  source_extension:
+    description: 'File extension passed to `find` to limit found files, example "png"'
+    required: true
+
+  destination_extensions:
+    description: 'Comma separated list of file extensions parsed and passed to `magik`, example "jpeg,avif"'
+    required: true
+
+  magik_opts:
+    description: 'Additional parameters to pass to `magik` for each found file and destination extension'
+    required: false
+
+  destination_name_prefix:
+    description: 'Optional prefix for output file names'
+    required: false
+
+  destination_name_suffix:
+    description: 'Optional suffix for output file names'
+    required: false
+
+  destination_clobber:
+    description: 'Enable clobbering preexisting files by setting to `1`'
+    default: 0
+    required: false
+
+##
+#
+outputs:
+  found:
+    description: 'New-line separated list of file paths found with `find` and provided inputs'
+
+  wrote:
+    description: 'New-line separated list of file paths written by `magik` with provided inputs'
+
+  failed:
+    description: 'New-line separated list of file paths `magik` failed to write'
+
