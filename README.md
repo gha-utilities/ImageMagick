@@ -94,7 +94,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Caching is recomended!
+      # Caching is recommended!
       - name: Cache assets/images
         uses: actions/cache@4
         with:
