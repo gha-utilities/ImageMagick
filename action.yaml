@@ -1,6 +1,10 @@
 name: 'ImageMagick GHA'
 description: 'GitHub Action wrapper for ImageMagick for file conversion and/or manipulation'
 
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+
 ##
 #
 inputs:
