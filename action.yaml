@@ -23,7 +23,7 @@ inputs:
   exec_magick:
     description: 'Executable name, with optional path, to ImageMagick executable'
     required: true
-    default: 'convert'
+    default: 'magick'
 
   destination_extensions:
     description: 'Comma separated list of file extensions parsed and passed to `magik`, example "jpeg,avif"'
