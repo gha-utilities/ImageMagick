@@ -5,6 +5,10 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
 
+branding:
+  icon: framed_picture
+  color: black
+
 ##
 #
 inputs:
