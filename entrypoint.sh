@@ -69,7 +69,9 @@ _source_extension="${INPUT_SOURCE_EXTENSION:?Undefined source extension}"
 _destination_name_prefix="${INPUT_DESTINATION_NAME_PREFIX:-}"
 _destination_name_suffix="${INPUT_DESTINATION_NAME_SUFFIX:-}"
 _destination_clobber="${INPUT_DESTINATION_CLOBBER:-0}"
-_magik_opts="${INPUT_MAGIK_OPTS}"
+_magick_opts="${INPUT_MAGICK_OPTS}"
+
+_exec_magick="${INPUT_EXEC_MAGICK:?Undefined exec name/path for Image Magick}"
 
 _found=()
 _wrote=()
@@ -78,7 +80,7 @@ _failed=()
 if ((VERBOSE)); then
 	printf >&2 '_destination_extensions -> %s\n' "${_destination_extensions[@]}"
 	printf >&2 '_source_extension -> %s\n' "${_source_extension}"
-	printf >&2 '_magik_opts -> %s\n' "${_magik_opts}"
+	printf >&2 '_magick_opts -> %s\n' "${_magick_opts}"
 	printf >&2 '_source_directory -> %s\n' "${_source_directory}"
 fi
 
@@ -119,17 +121,17 @@ while read -rd '' _source_path; do
 		fi
 
 		_command=()
-		if ((${#_magik_opts})); then
+		if ((${#_magick_opts})); then
 			if ((VERBOSE)); then
-				printf >&2 'magik "%s" %s "%s"\n' "${_source_path}" "${_magik_opts}" "${_destination_path}"
+				printf >&2 'magick "%s" %s "%s"\n' "${_source_path}" "${_magick_opts}" "${_destination_path}"
 			fi
 			# shellcheck disable=SC2206
-			_command=(magik "${_source_path}" ${_magik_opts} "${_destination_path}")
+			_command=("${_exec_magick}" "${_source_path}" ${_magick_opts} "${_destination_path}")
 		else
 			if ((VERBOSE)); then
-				printf >&2 'magik "%s" "%s"\n' "${_source_path}" "${_destination_path}"
+				printf >&2 '%s "%s" "%s"\n' "${_exec_magick}" "${_source_path}" "${_destination_path}"
 			fi
-			_command=(magik "${_source_path}" "${_destination_path}")
+			_command=("${_exec_magick}" "${_source_path}" "${_destination_path}")
 		fi
 
 		if "${_command[@]}"; then

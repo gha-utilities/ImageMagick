@@ -20,6 +20,11 @@ inputs:
     description: 'File extension passed to `find` to limit found files, example "png"'
     required: true
 
+  exec_magick:
+    description: 'Executable name, with optional path, to ImageMagick executable'
+    required: true
+    default: 'convert'
+
   destination_extensions:
     description: 'Comma separated list of file extensions parsed and passed to `magik`, example "jpeg,avif"'
     required: true
