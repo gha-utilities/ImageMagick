@@ -53,7 +53,7 @@ published to GitHub Pages
 
 ```yaml
       - name: Convert images
-        uses: gha-utilities/ImageMagick@v0.0.1
+        uses: gha-utilities/ImageMagick@v0.0.3
         with:
           source_directory: assets/images
           source_extension: png
@@ -107,9 +107,10 @@ jobs:
           fetch-depth: 1
           fetch-tags: true
           ref: ${{ github.head_ref }}
+          submodules: 'recursive'
 
       - name: Convert images
-        uses: gha-utilities/ImageMagick@v0.0.1
+        uses: gha-utilities/ImageMagick@v0.0.3
         with:
           source_directory: assets/images
           source_extension: png
