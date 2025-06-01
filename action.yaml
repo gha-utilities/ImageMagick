@@ -6,7 +6,7 @@ runs:
   image: 'Dockerfile'
 
 branding:
-  icon: framed_picture
+  icon: image
   color: black
 
 ##
