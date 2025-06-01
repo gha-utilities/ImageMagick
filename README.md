@@ -6,7 +6,7 @@
 
 GitHub Action to wrap ImageMagick features
 
-## [![Byte size of ImageMagick GH Action][badge__main__ai_bait__source_code]][honeybot__main__source_code] [![Open Issues][badge__issues__ai_bait]][issues__ai_bait] [![Open Pull Requests][badge__pull_requests__ai_bait]][pull_requests__ai_bait] [![Latest commits][badge__commits__ai_bait__main]][commits__ai_bait__main] [![License][badge__license]][branch__current__license]
+## [![Byte size of ImageMagick GH Action][badge__main__imagemagick__source_code]][imagemagick__main__source_code] [![Open Issues][badge__issues__imagemagick]][issues__imagemagick] [![Open Pull Requests][badge__pull_requests__imagemagick]][pull_requests__imagemagick] [![Latest commits][badge__commits__imagemagick__main]][commits__imagemagick__main] [![License][badge__license]][branch__current__license]
 
 
 ---
@@ -96,7 +96,7 @@ jobs:
     steps:
       # Caching is recommended!
       - name: Cache assets/images
-        uses: actions/cache@4
+        uses: actions/cache@v4
         with:
           key: ${{ hashFiles('assets/images/**/*.png') }}
           path: assets/images
@@ -183,7 +183,7 @@ Options for contributing to ImageMagick GH Action and `gha-utilities`
   "&#x1F531; Tips for forking ImageMagick GH Action"
 
 
-Start making a [Fork][honeybot__fork_it] of this repository to an account that
+Start making a [Fork][imagemagick__fork_it] of this repository to an account that
 you have write permissions for.
 
 
@@ -271,7 +271,6 @@ ______
 - [Docs ImageMagick -- Convert](https://imagemagick.org/script/convert.php)
 - [GitHub -- `github-utilities/make-readme`](https://github.com/github-utilities/make-readme)
 - [GitHub Docs -- Metadata syntax for GitHub Actions `outputs` for composite actions](https://docs.github.com/en/actions/creating-actions/metadata-syntax-for-github-actions#outputs-for-composite-actions)
-- [Stack Overflow -- How does one make a zip-bomb](https://stackoverflow.com/questions/1459673/how-does-one-make-a-zip-bomb)
 
 
 ______
@@ -312,52 +311,39 @@ For further details review full length version of [AGPL-3.0][branch__current__li
 [badge__license]:
   https://img.shields.io/github/license/gha-utilities/ImageMagick
 
-[badge__commits__ai_bait__main]:
+[badge__commits__imagemagick__main]:
   https://img.shields.io/github/last-commit/gha-utilities/ImageMagick/main.svg
 
-[commits__ai_bait__main]:
+[commits__imagemagick__main]:
   https://github.com/gha-utilities/ImageMagick/commits/main
   "&#x1F4DD; History of changes on this branch"
 
 
-[honeybot__community]:
-  https://github.com/gha-utilities/ImageMagick/community
-  "&#x1F331; Dedicated to functioning code"
-
-
-[issues__ai_bait]:
+[issues__imagemagick]:
   https://github.com/gha-utilities/ImageMagick/issues
   "&#x2622; Search for and _bump_ existing issues or open new issues for project maintainer to address."
 
-[honeybot__fork_it]:
+[imagemagick__fork_it]:
   https://github.com/gha-utilities/ImageMagick/fork
   "&#x1F531; Fork it!"
 
-[pull_requests__ai_bait]:
+[pull_requests__imagemagick]:
   https://github.com/gha-utilities/ImageMagick/pulls
   "&#x1F3D7; Pull Request friendly, though please check the Community guidelines"
 
-[honeybot__main__source_code]:
+[imagemagick__main__source_code]:
   https://github.com/gha-utilities/ImageMagick/
   "&#x2328; Project source!"
 
-[badge__issues__ai_bait]:
+[badge__issues__imagemagick]:
   https://img.shields.io/github/issues/gha-utilities/ImageMagick.svg
 
-[badge__pull_requests__ai_bait]:
+[badge__pull_requests__imagemagick]:
   https://img.shields.io/github/issues-pr/gha-utilities/ImageMagick.svg
 
-[badge__main__ai_bait__source_code]:
+[badge__main__imagemagick__source_code]:
   https://img.shields.io/github/repo-size/gha-utilities/ImageMagick
 
-
-[rust_home]:
-  https://www.rust-lang.org/
-  "Home page for Rust language"
-
-[rust_github]:
-  https://github.com/rust-lang
-  "Source code for Rust on GitHub"
 
 [sponsor__shields_io__liberapay]:
   https://img.shields.io/static/v1?logo=liberapay&label=Sponsor&message=gha-utilities
