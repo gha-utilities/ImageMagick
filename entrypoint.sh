@@ -123,7 +123,7 @@ while read -rd '' _source_path; do
 		_command=()
 		if ((${#_magick_opts})); then
 			if ((VERBOSE)); then
-				printf >&2 'magick "%s" %s "%s"\n' "${_source_path}" "${_magick_opts}" "${_destination_path}"
+				printf >&2 '%s "%s" %s "%s"\n' "${_exec_magick}" "${_source_path}" "${_magick_opts}" "${_destination_path}"
 			fi
 			# shellcheck disable=SC2206
 			_command=("${_exec_magick}" "${_source_path}" ${_magick_opts} "${_destination_path}")
