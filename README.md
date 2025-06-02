@@ -56,7 +56,7 @@ published to GitHub Pages
         uses: gha-utilities/ImageMagick@v0.0.5
         with:
           source_directory: assets/images
-          find_regex: '*.png'
+          find_regex: '.*.png'
           destination_extensions: jpeg,avif
 ```
 

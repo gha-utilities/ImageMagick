@@ -30,7 +30,9 @@ Expression as well as defining the _flavor_ of RegExp that `find` should use
          with:
            source_directory: assets/images
 -          source_extension: png
-+          find_regex: '*.png'
++          find_regex: '.*.png'
+-          magik_opts: "-resize '50%'"
++          magick_opts: "-resize '50%'"
            destination_extensions: jpeg,avif
 ```
 
