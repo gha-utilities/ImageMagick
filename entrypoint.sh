@@ -64,7 +64,8 @@ set -Ee -o functrace
 
 readarray -td ',' _destination_extensions < <(printf '%s' "${INPUT_DESTINATION_EXTENSIONS:?Undefined destination extensions}")
 _source_directory="${INPUT_SOURCE_DIRECTORY:?Undefined source directory}"
-_source_extension="${INPUT_SOURCE_EXTENSION:?Undefined source extension}"
+_find_regex="${INPUT_FIND_REGEX:?Undefined find -regex value}"
+_find_regextype="${INPUT_FIND_REGEXTYPE:?Undefined find -regextype value}"
 
 _destination_name_prefix="${INPUT_DESTINATION_NAME_PREFIX:-}"
 _destination_name_suffix="${INPUT_DESTINATION_NAME_SUFFIX:-}"
@@ -79,10 +80,20 @@ _failed=()
 
 if ((VERBOSE)); then
 	printf >&2 '_destination_extensions -> %s\n' "${_destination_extensions[@]}"
-	printf >&2 '_source_extension -> %s\n' "${_source_extension}"
+	printf >&2 '_find_regex -> %s\n' "${_find_regex}"
+	printf >&2 '_find_regextype -> %s\n' "${_find_regextype}"
 	printf >&2 '_magick_opts -> %s\n' "${_magick_opts}"
 	printf >&2 '_source_directory -> %s\n' "${_source_directory}"
 fi
+
+_command_find=(find "${_source_directory}" -type f)
+if (( ${#_find_regex} )); then
+	_command_magick+=(-regex "${_find_regex}")
+fi
+if (( ${#_find_regextype} )); then
+	_command_magick+=(-regextype "${_find_regextype}")
+fi
+_command_find+=(-print0)
 
 while read -rd '' _source_path; do
 	_found+=("${_source_path}")
@@ -120,27 +131,27 @@ while read -rd '' _source_path; do
 			continue
 		fi
 
-		_command=()
+		_command_magick=()
 		if ((${#_magick_opts})); then
 			if ((VERBOSE)); then
 				printf >&2 '%s "%s" %s "%s"\n' "${_exec_magick}" "${_source_path}" "${_magick_opts}" "${_destination_path}"
 			fi
 			# shellcheck disable=SC2206
-			_command=("${_exec_magick}" "${_source_path}" ${_magick_opts} "${_destination_path}")
+			_command_magick=("${_exec_magick}" "${_source_path}" ${_magick_opts} "${_destination_path}")
 		else
 			if ((VERBOSE)); then
 				printf >&2 '%s "%s" "%s"\n' "${_exec_magick}" "${_source_path}" "${_destination_path}"
 			fi
-			_command=("${_exec_magick}" "${_source_path}" "${_destination_path}")
+			_command_magick=("${_exec_magick}" "${_source_path}" "${_destination_path}")
 		fi
 
-		if "${_command[@]}"; then
+		if "${_command_magick[@]}"; then
 			_wrote+=("${_destination_path}")
 		else
 			_failed+=("${_destination_path}")
 		fi
 	done
-done < <(find "${_source_directory}" -type f -print0)
+done < <("${_command_find[@]}")
 
 if (( ${#_found[@]} )); then
 	tee -a 1>/dev/null "${GITHUB_OUTPUT:?Undefined GitHub Output environment variable}" <<EOL

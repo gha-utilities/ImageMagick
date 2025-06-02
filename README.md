@@ -56,7 +56,7 @@ published to GitHub Pages
         uses: gha-utilities/ImageMagick@v0.0.4
         with:
           source_directory: assets/images
-          source_extension: png
+          find_regex: '*.png'
           destination_extensions: jpeg,avif
 ```
 
@@ -113,7 +113,7 @@ jobs:
         uses: gha-utilities/ImageMagick@v0.0.4
         with:
           source_directory: assets/images
-          source_extension: png
+          find_regex: '*.png'
           destination_extensions: jpeg,avif
 
       # ↓ Do some site building here ↓

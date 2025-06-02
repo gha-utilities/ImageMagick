@@ -16,9 +16,14 @@ inputs:
     description: 'Directory passed to `find` for finding files'
     required: true
 
-  source_extension:
-    description: 'File extension passed to `find` to limit found files, example "png"'
+  find_regex:
+    description: 'Regular Expression passed to `find` to limit found files, example "*.png"'
     required: true
+
+  find_regextype:
+    description: 'Regular Expression type passed to `find` available values are; "emacs", "posix-awk", "posix-basic", "posix-egrep", or "posix-extended"'
+    required: true
+    default: 'emacs'
 
   exec_magick:
     description: 'Executable name, with optional path, to ImageMagick executable'
