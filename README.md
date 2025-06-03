@@ -53,7 +53,7 @@ published to GitHub Pages
 
 ```yaml
       - name: Convert images
-        uses: gha-utilities/ImageMagick@v0.0.5
+        uses: gha-utilities/ImageMagick@v0.0.6
         with:
           source_directory: assets/images
           find_regex: '.*.png'
@@ -110,7 +110,7 @@ jobs:
           submodules: 'recursive'
 
       - name: Convert images
-        uses: gha-utilities/ImageMagick@v0.0.5
+        uses: gha-utilities/ImageMagick@v0.0.6
         with:
           source_directory: assets/images
           find_regex: '*.png'
