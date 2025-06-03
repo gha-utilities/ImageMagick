@@ -62,6 +62,8 @@ trap 'failure "LINENO" "BASH_LINENO" "${?}"' ERR
 set -Ee -o functrace
 
 
+VERBOSE="${VERBOSE:-${INPUT_VERBOSE:-0}}"
+
 readarray -td ',' _destination_extensions < <(printf '%s' "${INPUT_DESTINATION_EXTENSIONS:?Undefined destination extensions}")
 _source_directory="${INPUT_SOURCE_DIRECTORY:?Undefined source directory}"
 _find_regex="${INPUT_FIND_REGEX:?Undefined find -regex value}"
